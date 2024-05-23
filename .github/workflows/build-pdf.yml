@@ -68,7 +68,7 @@
           uses: actions/upload-artifact@v4
           with:
             name: Build Artifacts
-            path: ${{ github.workspace }}/build/*.pdf
+            path: ${{ github.workspace }}/specification/build/*.pdf
 
         # Create Release
         - name: Create Release
