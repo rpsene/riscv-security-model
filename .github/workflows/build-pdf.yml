@@ -61,7 +61,7 @@
 
         # Build Files
         - name: Build Files
-          run: cd ./specification && make
+          run: git submodule update --remote && cd ./specification && make
 
         # Upload the built PDF files as a single artifact
         - name: Upload Build Artifacts
