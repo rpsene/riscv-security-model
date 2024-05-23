@@ -69,7 +69,6 @@
           with:
             name: Build Artifacts
             path: ${{ github.workspace }}/build/*.pdf
-            retention-days: 30
 
         # Create Release
         - name: Create Release
