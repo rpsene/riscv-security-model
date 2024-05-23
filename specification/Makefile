@@ -18,15 +18,26 @@ riscvintl/riscv-docs-base-container-image:latest
 HEADER_SOURCE := ./src/header.adoc
 PDF_RESULT := riscv-platform-security-model.pdf
 
+DATE ?= $(shell date +%Y-%m-%d)
+VERSION ?= v0.0.0
+REVMARK ?= Development
+
 ASCIIDOCTOR_PDF := asciidoctor-pdf
+ASCIIDOCTOR_HTML := asciidoctor
 OPTIONS := --trace \
            -a compress \
            -a mathematical-format=svg \
+           -a revnumber=${VERSION} \
+           -a revremark=${REVMARK} \
+           -a revdate=${DATE} \
            -a pdf-fontsdir=docs-resources/fonts \
-           -a pdf-style=docs-resources/themes/riscv-pdf.yml \
+           -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
+           $(XTRA_ADOC_OPTS) \
+		   -D build \
            --failure-level=ERROR
 REQUIRES := --require=asciidoctor-bibtex \
             --require=asciidoctor-diagram \
+			--require=asciidoctor-lists \
             --require=asciidoctor-mathematical
 
 .PHONY: all build clean build-container build-no-container
